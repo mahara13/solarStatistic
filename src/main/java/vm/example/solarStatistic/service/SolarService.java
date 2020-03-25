@@ -34,12 +34,13 @@ public class SolarService {
     public StatisticResponse getHourlyProductionData(Long solarParkId,
                                                      LocalDateTime startDate,
                                                      LocalDateTime endDate) throws Exception {
+        if (startDate == null  || endDate == null) {
+            throw new BadFormattedDateRangeException(startDate, endDate);
+        }
+
         LocalDateTime paramStartDate = startDate.with(LocalTime.MIN);
         LocalDateTime paramEndDate = endDate.with(LocalTime.MIN);
-
-        if (paramStartDate.toLocalDate().equals(paramEndDate.toLocalDate())) {
-            paramEndDate = paramStartDate.plusDays(1).minusSeconds(1);
-        }
+        paramEndDate = paramEndDate.plusDays(1).minusSeconds(1);
 
         if (paramStartDate.isAfter(paramEndDate)) {
             throw new BadFormattedDateRangeException(startDate, endDate);

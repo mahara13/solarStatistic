@@ -7,9 +7,9 @@ spring:
     hibernate:
       dialect: org.hibernate.dialect.PostgreSQLDialect
   datasource:
-    url: jdbc:postgresql://localhost:5433/solardb
-    username: postgres
-    password: m0ng0l12p2trub0k
+    url: jdbc:postgresql://localhost:{db-port}/{db-name}
+    username: {user-name}
+    password: {user-password}
   flyway:
     baseline-on-migrate: true
     enabled: false

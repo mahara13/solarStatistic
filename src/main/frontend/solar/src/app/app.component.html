@@ -1,0 +1,40 @@
+<mat-list class="configuration-list">
+  <mat-list-item>
+    <mat-form-field class="solar-park-select">
+      <mat-select placeholder="Solar Park" id="matSelect" #matSelect
+                  (selectionChange)="solarStatisticService.setId($event.value.id)">
+        <mat-option *ngFor="let solarPark of solarPlants | async" [value]="solarPark">
+          {{solarPark.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-error *ngIf="solarStatisticService.isIdInvalid" style="margin-left: 20px">*</mat-error>
+  </mat-list-item>
+
+  <mat-list-item>
+      <input [matDatepicker]="startDatepicker"
+             placeholder="Start Date"
+             (dateChange)="solarStatisticService.trySetStartDate($event.value)"
+             (dateInput)="solarStatisticService.trySetStartDate($event.value)">
+      <mat-datepicker-toggle [for]="startDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #startDatepicker></mat-datepicker>
+      <mat-error *ngIf="solarStatisticService.isStartDateInvalid">*</mat-error>
+
+
+    <input [matDatepicker]="endDatepicker" style="margin-left: 20px"
+           placeholder="End date"
+           (dateChange)="solarStatisticService.trySetEndDate($event.value)"
+           (dateInput)="solarStatisticService.trySetEndDate($event.value)">
+    <mat-datepicker-toggle [for]="endDatepicker"></mat-datepicker-toggle>
+    <mat-datepicker #endDatepicker></mat-datepicker>
+    <mat-error *ngIf="solarStatisticService.isEndDateInvalid">*</mat-error>
+    <mat-error *ngIf="solarStatisticService.showIncorrectDataRangeMessage" style="margin-left: 20px">
+      Start date should be less or equal to End date
+    </mat-error>
+
+  </mat-list-item>
+</mat-list>
+
+<app-statistic-table></app-statistic-table>
+
+<router-outlet></router-outlet>

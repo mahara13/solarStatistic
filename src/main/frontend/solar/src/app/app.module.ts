@@ -43,6 +43,7 @@ import {SolarParksService} from "./solar-parks.service";
     MatInputModule
   ],
   providers: [
+
     SolarStatisticService,
     SolarParksService,
     MatDatepickerModule,

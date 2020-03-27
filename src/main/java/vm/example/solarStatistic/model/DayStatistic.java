@@ -15,4 +15,16 @@ public class DayStatistic {
         this.capacityFactor = capacityFactor;
         this.countOfProductiveHours = countOfProductiveHours;
     }
+
+    public LocalDate getDay() {
+        return day;
+    }
+
+    public Double getCapacityFactor() {
+        return capacityFactor;
+    }
+
+    public Integer getCountOfProductiveHours() {
+        return countOfProductiveHours;
+    }
 }

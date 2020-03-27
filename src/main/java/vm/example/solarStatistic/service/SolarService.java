@@ -66,7 +66,7 @@ public class SolarService {
         List<DayStatistic> daysStatisticList = new LinkedList<>();
         mapHourlyProductionDataToDays.forEach((localDate, hourlyProductionDataList) -> {
             Double producedMW = hourlyProductionDataList.stream().reduce(0D,
-                    (aDouble, hourlyProductionData) -> hourlyProductionData.getElectricityProducedMW().doubleValue(),
+                    (aDouble, hourlyProductionData) -> aDouble + hourlyProductionData.getElectricityProducedMW().doubleValue(),
                     (left, right) -> left + right);
             int countOfProductiveHours = hourlyProductionDataList.size();
             Double capacity = producedMW / (countOfProductiveHours * solarPark.getCapacityPerHourMW().doubleValue());

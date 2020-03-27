@@ -39,7 +39,7 @@ public class EmbeddedDB {
         march2 = LocalDateTime.of(2020, 03, 2, 0, 0);
 
         march1_hour1_japan = getHourlyProductionData(march1, japanSolarPark, 5D);
-        march1_hour2_japan = getHourlyProductionData(march1, japanSolarPark, 1D);
+        march1_hour2_japan = getHourlyProductionData(march1, japanSolarPark, 5D);
         march2_hour1_japan = getHourlyProductionData(march2, japanSolarPark, 10D);
 
         hourlyProductionDataRepository.save(march1_hour1_japan);

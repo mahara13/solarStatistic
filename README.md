@@ -1,7 +1,7 @@
 # Solar Park Statistic POC Sample
 
 This repository contains a sample  POC application. 
-In the application, fora persistence layer Postgres DB is used. 
+In the application, for the persistence layer Postgres DB is used. 
 For the backend Spring 5 frameworks are used to expose statistic endpoints. 
 For frontend Angular 2+ is used.
 
